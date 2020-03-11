@@ -1,6 +1,6 @@
 //Memoria de programa, se inicializa y no se modifica
 
-module memprog(input  wire        clk,
+module memprog(input  wire clk,
                input  wire [9:0]  a,
                output wire [15:0] rd);
 

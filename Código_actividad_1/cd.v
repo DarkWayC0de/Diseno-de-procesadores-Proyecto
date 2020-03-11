@@ -1,4 +1,16 @@
-module cd (input wire clk, reset, s_inc, s_inm, we3, wez, selectorMuxSaltoR, guardarMemoriaDatos, activarMemoria, selecionarMuxDireccionesMemoriaDatos,
+module cd (input wire clk, 
+                      reset, 
+                      s_inc, 
+                      s_inm, 
+                      we3, 
+                      wez, 
+                      selectorMuxSaltoR, 
+                      guardarMemoriaDatos, 
+                      activarMemoria, 
+                      selectorMuxDireccionMemoriaDatos, 
+                      activarPilaSubRutinas,
+                      pushPilaSubRutinas,
+                      selectorMuxPilaSubRutinas,
            input wire [2:0] op_alu, 
            output wire z, 
            output wire [5:0] opcode);
@@ -70,7 +82,6 @@ mux2 #(10) muxPC(entrada1MuxPC[9:0],
                  salidaMuxPC[9:0]);
 
 assign entrada1MuxPC[9:0] = salidaDatosMemoriaPrograma[9:0];
-assign entradaPC[9:0] = salidaMuxPC[9:0];
 assign selectorMuxPC = s_inc;
 
 wire [9:0] entrada1SumadorPC,
@@ -149,11 +160,38 @@ wire [6:0] entrada1MuxDireccionMemoriaDatos,
 
 mux2#(7) muxDirecionMemoriaDatos(entrada1MuxDireccionMemoriaDatos[6:0],
                                  entrada2MuxDireccionMemoriaDatos[6:0],
-                                 selectorMuxDirecionMemoriaDatos,
+                                 selectorMuxDireccionMemoriaDatos,
                                  salidaMuxDireccionMemoriaDatos[6:0]);
 
 assign entrada1MuxDireccionMemoriaDatos[6:0] = salidaDatosMemoriaPrograma[6:0];
 assign entrada2MuxDireccionMemoriaDatos[6:0] = salidaDatosMemoriaPrograma[10:4];
 assign direccionMemoriaDatos = salidaMuxDireccionMemoriaDatos[6:0];
+
+wire [9:0] entradaPilaSubRutinas,
+           salidaPilaSubRutinas;
+
+pila #(10) pilaSubRutinas(clk, 
+                         activarPilaSubRutinas, 
+                         pushPilaSubRutinas,
+                         entradaPilaSubRutinas[9:0], 
+                         salidaPilaSubRutinas[9:0]);
+
+assign entradaPilaSubRutinas[9:0] = salidaSumadorPC[9:0];
+
+wire [9:0] entrada1MuxPilaSubRutinas,
+           entrada2MuxPilaSubRutinas,
+           salidaMuxPilaSubRutinas;
+
+mux2#(10) muxPilaSubrutinas(entrada1MuxPilaSubRutinas[9:0],
+                            entrada2MuxPilaSubRutinas[9:0],
+                            selectorMuxPilaSubRutinas,
+                            salidaMuxPilaSubRutinas[9:0]);
+
+assign entrada1MuxPilaSubRutinas[9:0] = salidaMuxPC[9:0];
+assign entrada2MuxPilaSubRutinas[9:0] = salidaPilaSubRutinas[9:0];
+assign entradaPC[9:0] = salidaMuxPilaSubRutinas[9:0];
+
+
+
 
 endmodule

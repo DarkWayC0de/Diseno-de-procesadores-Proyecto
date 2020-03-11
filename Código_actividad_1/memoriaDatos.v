@@ -15,7 +15,7 @@
    assign salidaDatos = mem[direccionMemoria];
 
    always @(posedge guardar) 
-     if(guardar)
+     if(guardar && activa)
      begin
        mem[direccionMemoria] = entradaDatos;
      end
