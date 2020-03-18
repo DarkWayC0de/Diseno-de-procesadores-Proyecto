@@ -1,15 +1,20 @@
 module cd (input wire clk, 
-                      reset, 
-                      s_inc, 
-                      s_inm, 
-                      we3, 
-                      wez, 
-                      selectorMuxSaltoR, 
-                      guardarMemoriaDatos, 
-                      selectorMuxDireccionMemoriaDatos, 
-                      activarPilaSubRutinas,
-                      pushPilaSubRutinas,
-                      selectorMuxPilaSubRutinas,
+                      reset,
+                      we3,
+                      wez,
+                      s_inc,
+                      selectorMuxSaltoR,
+                      selectorMuxRegistros,
+                      guardarMemoriaDatos,
+                      activarMemoriaDatos,
+                      selectorMuxDireccionesMemoriaDatos,
+                      activarPilaSubR,
+                      pushPilaSubR,
+                      selectorMuxPilaSubR,
+                      activarPilaDatos,
+                      pushPilaDatos,
+                      selectorMuxPilaDatos,
+                      selectorMuxAluMem_E_S, 
            input wire [2:0] op_alu, 
            output wire z, 
            output wire [5:0] opcode);
@@ -123,7 +128,6 @@ assign operando1ALU[7:0] = datoSalidaRegistro1[7:0];
 assign operando2ALU[7:0] = datoSalidaRegistro2[7:0];
 assign entradaFFZ =  salidaZALU;
 
-wire selectorMuxRegistros;
 wire [7:0] entrada1MuxRegistros,
            entrada2MuxRegistros,
            salidaMuxRegistros;
@@ -133,9 +137,8 @@ mux2 #(8) muxRegistros(entrada1MuxRegistros[7:0],
                        selectorMuxRegistros,
                        salidaMuxRegistros[7:0]);
 
-assign selectorMuxRegistros = s_inm;
-assign entrada1MuxRegistros[7:0] = salidaALU[7:0];
 assign entrada2MuxRegistros[7:0] = salidaDatosMemoriaPrograma[11:04];
+
 
 wire [6:0] direccionMemoriaDatos;
 wire [7:0] entradaMemoriaDatos,
@@ -148,22 +151,27 @@ memoriaDatos memoriaDeDatos(clk,
                             entradaMemoriaDatos[7:0],
                             salidaMemoriaDatos[7:0]);
 
-assign datoAEscribir[7:0] = salidaMemoriaDatos[7:0];
 assign entradaMemoriaDatos = datoSalidaRegistro1[7:0];
 
 
-wire [6:0] entrada1MuxDireccionMemoriaDatos,
+wire [7:0] entrada1MuxDireccionMemoriaDatos,
            entrada2MuxDireccionMemoriaDatos,
            salidaMuxDireccionMemoriaDatos;
 
-mux2#(7) muxDirecionMemoriaDatos(entrada1MuxDireccionMemoriaDatos[6:0],
-                                 entrada2MuxDireccionMemoriaDatos[6:0],
+mux2#(8) muxDirecionMemoriaDatos(entrada1MuxDireccionMemoriaDatos[7:0],
+                                 entrada2MuxDireccionMemoriaDatos[7:0],
                                  selectorMuxDireccionMemoriaDatos,
-                                 salidaMuxDireccionMemoriaDatos[6:0]);
+                                 salidaMuxDireccionMemoriaDatos[7:0]);
 
-assign entrada1MuxDireccionMemoriaDatos[6:0] = salidaDatosMemoriaPrograma[6:0];
-assign entrada2MuxDireccionMemoriaDatos[6:0] = salidaDatosMemoriaPrograma[10:4];
+assign entrada1MuxDireccionMemoriaDatos[7:0] = salidaDatosMemoriaPrograma[7:0];
+assign entrada2MuxDireccionMemoriaDatos[7:0] = salidaDatosMemoriaPrograma[11:4];
 assign direccionMemoriaDatos = salidaMuxDireccionMemoriaDatos[6:0];
+assign activarMemoria = activarMemoriaDatos && !salidaMuxDireccionMemoriaDatos[7:7];
+
+///ES (entradatos = datosSalidaRegistro1[7:0],
+//     activarE/S = activarMemoriaDatos && salidaMuxDireccionMemoria[7]
+//     direcionE/S = salidaMuxDireccionMemoriaDatos[6:0]
+//     escribirE/S = guardarMemoriaDatos)
 
 wire [9:0] entradaPilaSubRutinas,
            salidaPilaSubRutinas;
@@ -212,7 +220,33 @@ mux2#(8) muxPilaDatos(entrada1MuxPilaDatos[7:0],
 
 assign entrada1MuxPilaDatos [7:0] = salidaMuxRegistros[7:0];
 assign entrada2MuxPilaDatos [7:0] = salidaPilaDatos[7:0];
-assign datoAEscribir[7:0] = salidaMuxPilaDatos[7:0];       
+assign datoAEscribir[7:0] = salidaMuxPilaDatos[7:0];      
+ 
+wire selectorMuxMem_E_S;
+wire [7:0] entrada1MuxMem_E_S,
+           entrada2MuxMem_E_S,
+           salidaMuxMem_E_S;
 
+mux2#(8) muxMem_E_S(entrada1MuxMem_E_S[7:0],
+                    entrada2MuxMem_E_S[7:0],
+                    selectorMuxMem_E_S,
+                    salidaMuxMem_E_S[7:0]);
+
+assign entrada1MuxMem_E_S[7:0] = salidaMemoriaDatos[7:0];
+//assign entrada2MuxMem_E_S[7:0] = //Salida E_S
+assign selectorMuxMem_E_S = salidaMuxDireccionMemoriaDatos[7:7];
+
+wire [7:0] entrada1MuxALU_Mem,
+           entrada2MuxALU_Mem,
+           salidaMuxALU_Mem;
+
+mux2#(8) muxALU_Mem(entrada1MuxALU_Mem[7:0],
+                    entrada2MuxALU_Mem[7:0],
+                    selectorMuxALU_Mem,
+                    salidaMuxALU_Mem[7:0]);
+
+assign entrada1MuxRegistros [7:0] = salidaMuxMem_E_S[7:0];
+assign entrada1MuxALU_Mem[7:0] = salidaALU[7:0];
+assign entrada2MuxALU_Mem[7:0] = salidaMuxMem_E_S[7:0];
 
 endmodule 
