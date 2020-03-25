@@ -14,7 +14,7 @@ module cd (input wire clk,
                       activarPilaDatos,
                       pushPilaDatos,
                       selectorMuxPilaDatos,
-                      selectorMuxAluMem_E_S, 
+                      selectorMuxAluMem, 
            input wire [2:0] op_alu, 
            output wire z, 
            output wire [5:0] opcode);
@@ -74,6 +74,7 @@ ffd ffz(clk,
         salidadFFZ);
 
 assign cargaFFZ = wez;
+assign z = salidadFFZ;
 
 wire [9:0] entrada1MuxPC,
            entrada2MuxPC,
@@ -143,6 +144,7 @@ assign entrada2MuxRegistros[7:0] = salidaDatosMemoriaPrograma[11:04];
 wire [6:0] direccionMemoriaDatos;
 wire [7:0] entradaMemoriaDatos,
            salidaMemoriaDatos;
+wire activarMemoria;
 
 memoriaDatos memoriaDeDatos(clk,
                             guardarMemoriaDatos,
@@ -160,7 +162,7 @@ wire [7:0] entrada1MuxDireccionMemoriaDatos,
 
 mux2#(8) muxDirecionMemoriaDatos(entrada1MuxDireccionMemoriaDatos[7:0],
                                  entrada2MuxDireccionMemoriaDatos[7:0],
-                                 selectorMuxDireccionMemoriaDatos,
+                                 selectorMuxDireccionesMemoriaDatos,            
                                  salidaMuxDireccionMemoriaDatos[7:0]);
 
 assign entrada1MuxDireccionMemoriaDatos[7:0] = salidaDatosMemoriaPrograma[7:0];
@@ -177,8 +179,8 @@ wire [9:0] entradaPilaSubRutinas,
            salidaPilaSubRutinas;
 
 pila #(10) pilaSubRutinas(clk, 
-                         activarPilaSubRutinas, 
-                         pushPilaSubRutinas,
+                         activarPilaSubR, 
+                         pushPilaSubR,
                          entradaPilaSubRutinas[9:0], 
                          salidaPilaSubRutinas[9:0]);
 
@@ -191,12 +193,13 @@ wire [9:0] entrada1MuxPilaSubRutinas,
 
 mux2#(10) muxPilaSubrutinas(entrada1MuxPilaSubRutinas[9:0],
                             entrada2MuxPilaSubRutinas[9:0],
-                            selectorMuxPilaSubRutinas,
+                            selectorMuxPilaSubR,
                             salidaMuxPilaSubRutinas[9:0]);
 
 assign entrada1MuxPilaSubRutinas[9:0] = salidaMuxPC[9:0];
 assign entrada2MuxPilaSubRutinas[9:0] = salidaPilaSubRutinas[9:0];
 assign entradaPC[9:0] = salidaMuxPilaSubRutinas[9:0];
+
 
 wire [9:0]  entradaPilaDatos,
              salidaPilaDatos;
@@ -242,10 +245,10 @@ wire [7:0] entrada1MuxALU_Mem,
 
 mux2#(8) muxALU_Mem(entrada1MuxALU_Mem[7:0],
                     entrada2MuxALU_Mem[7:0],
-                    selectorMuxALU_Mem,
+                    selectorMuxAluMem,
                     salidaMuxALU_Mem[7:0]);
 
-assign entrada1MuxRegistros [7:0] = salidaMuxMem_E_S[7:0];
+assign entrada1MuxRegistros[7:0] = salidaMuxALU_Mem[7:0];
 assign entrada1MuxALU_Mem[7:0] = salidaALU[7:0];
 assign entrada2MuxALU_Mem[7:0] = salidaMuxMem_E_S[7:0];
 
