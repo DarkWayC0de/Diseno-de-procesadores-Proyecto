@@ -15,19 +15,55 @@ module cd (input wire clk,
                       pushPilaDatos,
                       selectorMuxPilaDatos,
                       selectorMuxAluMem, 
-           input wire [2:0] op_alu, 
+           input wire [2:0] op_alu,
+           input wire [2:0] interrupciones, 
            output wire z, 
            output wire [5:0] opcode);
 //Camino de datos de instrucciones de un solo ciclo
 
 wire [9:0] entradaDatosMemoriaPrograma;
+reg [15:0] instruccion;
 wire [15:0] salidaDatosMemoriaPrograma;
 
 memprog memoriaPrograma(clk, 
                         entradaDatosMemoriaPrograma[9:0], 
                         salidaDatosMemoriaPrograma[15:0]);
+always @(interrupciones)
+begin
+  if(interrupciones == 3'b000) 
+    begin
+      instruccion[15:0] = salidaDatosMemoriaPrograma[15:0];
+    end
+  else
+    begin
+      instruccion[15:10]= 6'b111011;
+      case(interrupciones)
+        3'b001: begin
+          instruccion[9:0] = 10'b1111111111;
+        end
+        3'b010: begin
+          instruccion[9:0] = 10'b1111111100;
+        end
+        3'b011: begin
+          instruccion[9:0] = 10'b1111111101;
+        end
+        3'b100: begin
+          instruccion[9:0] = 10'b1111111100;
+        end
+        3'b101: begin
+          instruccion[9:0] = 10'b1111111011;
+        end
+        3'b110: begin
+          instruccion[9:0] = 10'b1111111010;
+        end
+        3'b111: begin
+          instruccion[9:0] = 10'b1111111001;
+        end
+      endcase      
+    end
+end
 
-assign opcode[5:0] = salidaDatosMemoriaPrograma[15:10];
+assign opcode[5:0] = instruccion[15:10];
 
 wire habilitarEscrituraBancoRegistros;
 wire [3:0] direccionSalidaRegistro1,
@@ -46,9 +82,9 @@ regfile bancoDeRegistros(clk,
                          datoSalidaRegistro1[7:0], 
                          datoSalidaRegistro2[7:0]);
 
-assign direccionSalidaRegistro1[3:0] = salidaDatosMemoriaPrograma[11:8];
-assign direccionSalidaRegistro2[3:0] = salidaDatosMemoriaPrograma[7:4];
-assign direccionRegistroEscritura[3:0] = salidaDatosMemoriaPrograma[3:0];
+assign direccionSalidaRegistro1[3:0] = instruccion[11:8];
+assign direccionSalidaRegistro2[3:0] = instruccion[7:4];
+assign direccionRegistroEscritura[3:0] = instruccion[3:0];
 assign habilitarEscrituraBancoRegistros = we3;
 
 
@@ -86,7 +122,7 @@ mux2 #(10) muxPC(entrada1MuxPC[9:0],
                  selectorMuxPC,
                  salidaMuxPC[9:0]);
 
-assign entrada1MuxPC[9:0] = salidaDatosMemoriaPrograma[9:0];
+assign entrada1MuxPC[9:0] = instruccion[9:0];
 assign selectorMuxPC = s_inc;
 
 wire [9:0] entrada1SumadorPC,
@@ -111,7 +147,7 @@ mux2 #(10) muxSaltoRelativo(entrada1MuxSaltoR[9:0],
 
 assign entrada1SumadorPC[9:0] = salidaMuxSaltoR[9:0];
 assign entrada1MuxSaltoR[9:0] = 10'b0000000001;
-assign entrada2MuxSaltoR[9:0] = salidaDatosMemoriaPrograma[9:0];
+assign entrada2MuxSaltoR[9:0] = instruccion[9:0];
 
 
 wire salidaZALU;
@@ -138,7 +174,7 @@ mux2 #(8) muxRegistros(entrada1MuxRegistros[7:0],
                        selectorMuxRegistros,
                        salidaMuxRegistros[7:0]);
 
-assign entrada2MuxRegistros[7:0] = salidaDatosMemoriaPrograma[11:04];
+assign entrada2MuxRegistros[7:0] = instruccion[11:04];
 
 
 wire [6:0] direccionMemoriaDatos;
@@ -165,8 +201,8 @@ mux2#(8) muxDirecionMemoriaDatos(entrada1MuxDireccionMemoriaDatos[7:0],
                                  selectorMuxDireccionesMemoriaDatos,            
                                  salidaMuxDireccionMemoriaDatos[7:0]);
 
-assign entrada1MuxDireccionMemoriaDatos[7:0] = salidaDatosMemoriaPrograma[7:0];
-assign entrada2MuxDireccionMemoriaDatos[7:0] = salidaDatosMemoriaPrograma[11:4];
+assign entrada1MuxDireccionMemoriaDatos[7:0] = instruccion[7:0];
+assign entrada2MuxDireccionMemoriaDatos[7:0] = instruccion[11:4];
 assign direccionMemoriaDatos = salidaMuxDireccionMemoriaDatos[6:0];
 assign activarMemoria = activarMemoriaDatos && !salidaMuxDireccionMemoriaDatos[7:7];
 

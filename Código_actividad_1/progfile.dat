@@ -1014,11 +1014,11 @@
 0000_0000_0000_0000
 0000_0000_0000_0000
 0000_0000_0000_0000
-0000_0000_0000_0000
-0000_0000_0000_0000
-0000_0000_0000_0000
-0000_0000_0000_0000
-1111_0000_0000_0000 //salto directo a interruccion 4
-1111_0000_0000_0000 //salto directo a interruccion 3
-1111_0000_0000_0000 //salto directo a interruccion 2
-1111_0000_0000_0000 //salto directo a interruccion 1
+1110_1000_0000_0000 //vuelta de interrupcion
+1111_0011_1111_1000 //salto directo a interruccion 7
+1111_0011_1111_1000 //salto directo a interruccion 6
+1111_0011_1111_1000 //salto directo a interruccion 5
+1111_0011_1111_1000 //salto directo a interruccion 4
+1111_0011_1111_1000 //salto directo a interruccion 3
+1111_0011_1111_1000 //salto directo a interruccion 2
+1111_0011_1111_1000 //salto directo a interruccion 1

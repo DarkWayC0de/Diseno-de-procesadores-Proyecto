@@ -4,6 +4,7 @@ module cpu_tb;
 
 
 reg clk, reset;
+reg [2:0] interrupciones;
 
 
 // generación de reloj clk
@@ -16,7 +17,7 @@ begin
 end
 
 // instanciación del procesador
-cpu micpu(clk, reset);
+cpu micpu(clk, reset,interrupciones);
 
 initial
 begin

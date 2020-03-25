@@ -1,4 +1,4 @@
-module cpu(input wire clk, reset);
+module cpu(input wire clk, reset, input wire [2:0] interrupciones);
 wire z,
      we3,
      wez,
@@ -56,6 +56,7 @@ cd CaminoDeDatos(clk,
                  selectorMuxPilaDatos,
                  selectorMuxAluMem_E_S,
                  op_alu[2:0],
+                 interrupciones,
                  z,
                  opcode[5:0]);
 endmodule
