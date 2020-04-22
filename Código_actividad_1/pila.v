@@ -11,7 +11,7 @@
    end
    
 
-   reg [DATA-1:0] mem[0:511]; //memoria de 512  palabras de 8 bits de ancho
+   reg [DATA-1:0] mem[0:63]; //memoria de 63  palabras de 8 bits de ancho
  
    
 

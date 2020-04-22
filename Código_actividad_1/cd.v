@@ -18,48 +18,67 @@ module cd (input wire clk,
            input wire [2:0] op_alu,
            input wire [2:0] interrupciones, 
            output wire z, 
-           output wire [5:0] opcode);
+           output wire [5:0] opcode,
+           input wire [7:0] entradaDispositivo1,
+           output wire [7:0] salidaDispositivo1,
+           input wire [7:0] entradaDispositivo2,
+           output wire [7:0] salidaDispositivo2,
+           input wire [7:0] entradaDispositivo3,
+           output wire [7:0] salidaDispositivo3,
+           input wire [7:0] entradaDispositivo4,
+           output wire [7:0] salidaDispositivo4,
+           input wire [7:0] entradaDispositivo5,
+           output wire [7:0] salidaDispositivo5
+           );
 //Camino de datos de instrucciones de un solo ciclo
 
 wire [9:0] entradaDatosMemoriaPrograma;
 reg [15:0] instruccion;
 wire [15:0] salidaDatosMemoriaPrograma;
 
+parameter ins = 16'b1110111111111111; 
+
 memprog memoriaPrograma(clk, 
                         entradaDatosMemoriaPrograma[9:0], 
                         salidaDatosMemoriaPrograma[15:0]);
-always @(interrupciones)
+always @(interrupciones,reset,salidaDatosMemoriaPrograma)
 begin
+  if(reset)
+    begin
+    instruccion[15:0] <=16'b00;
+    end
+  else
+  begin
   if(interrupciones == 3'b000) 
     begin
-      instruccion[15:0] = salidaDatosMemoriaPrograma[15:0];
+      instruccion[15:0] <= salidaDatosMemoriaPrograma[15:0];
     end
   else
     begin
-      instruccion[15:10]= 6'b111011;
       case(interrupciones)
         3'b001: begin
-          instruccion[9:0] = 10'b1111111111;
+          instruccion[15:0] <= ins;
         end
         3'b010: begin
-          instruccion[9:0] = 10'b1111111100;
+          instruccion[15:0] <= ins -16'b1;
         end
         3'b011: begin
-          instruccion[9:0] = 10'b1111111101;
+          instruccion[15:0] <= ins -16'b10;
         end
         3'b100: begin
-          instruccion[9:0] = 10'b1111111100;
+          instruccion[15:0] <= ins -16'b11;
         end
         3'b101: begin
-          instruccion[9:0] = 10'b1111111011;
+          instruccion[15:0] <= ins -16'b100;
         end
         3'b110: begin
-          instruccion[9:0] = 10'b1111111010;
+          instruccion[15:0] <= ins -16'b101;
         end
         3'b111: begin
-          instruccion[9:0] = 10'b1111111001;
+          instruccion[15:0] <= ins -16'b110;
         end
       endcase      
+    end
     end
 end
 
@@ -206,10 +225,28 @@ assign entrada2MuxDireccionMemoriaDatos[7:0] = instruccion[11:4];
 assign direccionMemoriaDatos = salidaMuxDireccionMemoriaDatos[6:0];
 assign activarMemoria = activarMemoriaDatos && !salidaMuxDireccionMemoriaDatos[7:7];
 
-///ES (entradatos = datosSalidaRegistro1[7:0],
-//     activarE/S = activarMemoriaDatos && salidaMuxDireccionMemoria[7]
-//     direcionE/S = salidaMuxDireccionMemoriaDatos[6:0]
-//     escribirE/S = guardarMemoriaDatos)
+wire [7:0] datosSalidaEntradaSalida;
+wire activarEntradaSalida;
+assign activarEntradaSalida = activarMemoriaDatos && salidaMuxDireccionMemoriaDatos[7:7];
+
+entradaSalida dispositivosEntradaSalida(clk,
+                                        reset,
+                                        entradaDispositivo1 [7:0],
+                                        salidaDispositivo1 [7:0],
+                                        entradaDispositivo2 [7:0],
+                                        salidaDispositivo2 [7:0],
+                                        entradaDispositivo3 [7:0],
+                                        salidaDispositivo3 [7:0],
+                                        entradaDispositivo4 [7:0],
+                                        salidaDispositivo4 [7:0],
+                                        entradaDispositivo5 [7:0],
+                                        salidaDispositivo5 [7:0],
+                                        datoSalidaRegistro1[7:0], 
+                                        salidaMuxDireccionMemoriaDatos [6:0],
+                                        datosSalidaEntradaSalida [7:0],
+                                        activarEntradaSalida,
+                                        guardarMemoriaDatos
+                                        );
 
 wire [9:0] entradaPilaSubRutinas,
            salidaPilaSubRutinas;
@@ -272,7 +309,8 @@ mux2#(8) muxMem_E_S(entrada1MuxMem_E_S[7:0],
                     salidaMuxMem_E_S[7:0]);
 
 assign entrada1MuxMem_E_S[7:0] = salidaMemoriaDatos[7:0];
-//assign entrada2MuxMem_E_S[7:0] = //Salida E_S
+//assign entrada2MuxMem_E_S[7:0] = //Salida_E_S[7:0];
+assign entrada2MuxMem_E_S[7:0] = datosSalidaEntradaSalida[7:0];
 assign selectorMuxMem_E_S = salidaMuxDireccionMemoriaDatos[7:7];
 
 wire [7:0] entrada1MuxALU_Mem,
