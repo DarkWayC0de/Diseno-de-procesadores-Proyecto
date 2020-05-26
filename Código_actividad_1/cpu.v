@@ -1,5 +1,5 @@
 module cpu(input wire clk, reset, 
-           input wire [2:0] interrupciones,
+   input wire [2:0] interrupciones,
            input wire [7:0] entradaDispositivo1,
            output wire [7:0] salidaDispositivo1,
            input wire [7:0] entradaDispositivo2,

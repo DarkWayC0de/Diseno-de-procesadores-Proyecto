@@ -3,4 +3,7 @@
 Diseño de una cpu  simple completa
 
 
+Interrupcione
+Timer
+Software polling 8 Segmentos
 
