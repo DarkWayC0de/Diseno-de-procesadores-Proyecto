@@ -35,8 +35,10 @@ cpu micpu(clk,
           salidaDispositivo[4][7:0]);
 
 wire salidaTimer;
+reg [2:0] timerselctor;
 timer mitimer(reset,
               clk,
+			  timerselctor,
               salidaTimer);
 
 always @(clk) begin
@@ -65,6 +67,7 @@ end
 initial
 begin
 interrupciones = 3'b000;
+timerselctor = 3'b011;
 end
 
 endmodule
