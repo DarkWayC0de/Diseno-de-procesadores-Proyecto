@@ -16,17 +16,40 @@ module entradaSalida(input wire clk,
                      input activarEntradaSalida,
                      input escribirEntradaSalida
                      );
+reg [7:0] regSalidaDispositivos0;
+reg [7:0] regSalidaDispositivos1;
+reg [7:0] regSalidaDispositivos2;
+reg [7:0] regSalidaDispositivos3;
+reg [7:0] regSalidaDispositivos4;
+always @(reset)
+if (reset)
+begin
+  regSalidaDispositivos0[7:0]=8'b00;
+  regSalidaDispositivos1[7:0]=8'b00;
+  regSalidaDispositivos2[7:0]=8'b00;
+  regSalidaDispositivos3[7:0]=8'b00;
+  regSalidaDispositivos4[7:0]=8'b00;
+end
+
+initial
+begin
+  regSalidaDispositivos0[7:0]=8'b00;
+  regSalidaDispositivos1[7:0]=8'b00;
+  regSalidaDispositivos2[7:0]=8'b00;
+  regSalidaDispositivos3[7:0]=8'b00;
+  regSalidaDispositivos4[7:0]=8'b00;
+end					 
 reg [7:0] datoALeer;
 
 assign salidaEntradaSalida[7:0] = datoALeer[7:0];
 
-assign salidaDispositivo1[7:0] = (!direccionEntradaSalida[0] && !direccionEntradaSalida[1] && !direccionEntradaSalida[2])? entradaEntradaSalida[7:0]: 8'b0;
-assign salidaDispositivo2[7:0] = (direccionEntradaSalida[0] && !direccionEntradaSalida[1] && !direccionEntradaSalida[2])? entradaEntradaSalida[7:0]: 8'b0;
-assign salidaDispositivo3[7:0] = (!direccionEntradaSalida[0] && direccionEntradaSalida[1] && !direccionEntradaSalida[2])? entradaEntradaSalida[7:0]: 8'b0;
-assign salidaDispositivo4[7:0] = (direccionEntradaSalida[0] && direccionEntradaSalida[1] && !direccionEntradaSalida[2])? entradaEntradaSalida[7:0]: 8'b0;
-assign salidaDispositivo5[7:0] = (!direccionEntradaSalida[0] && !direccionEntradaSalida[1] && direccionEntradaSalida[2])? entradaEntradaSalida[7:0]: 8'b0;
+assign salidaDispositivo1[7:0] = regSalidaDispositivos0[7:0];
+assign salidaDispositivo2[7:0] = regSalidaDispositivos1[7:0];
+assign salidaDispositivo3[7:0] = regSalidaDispositivos2[7:0];
+assign salidaDispositivo4[7:0] = regSalidaDispositivos3[7:0];
+assign salidaDispositivo5[7:0] = regSalidaDispositivos4[7:0];
 
-always @(clk)
+always @(clk) begin
 if (activarEntradaSalida && !reset) begin  
   if (!escribirEntradaSalida) begin  
     case (direccionEntradaSalida)
@@ -49,5 +72,11 @@ if (activarEntradaSalida && !reset) begin
         datoALeer[7:0] = salidaDispositivo1[7:0];
     endcase 
   end
+end
+  regSalidaDispositivos0[7:0] = (!direccionEntradaSalida[0] && !direccionEntradaSalida[1] && !direccionEntradaSalida[2])? entradaEntradaSalida[7:0]: 8'b0;
+  regSalidaDispositivos1[7:0] = (direccionEntradaSalida[0] && !direccionEntradaSalida[1] && !direccionEntradaSalida[2])? entradaEntradaSalida[7:0]: 8'b0;
+  regSalidaDispositivos2[7:0] = (!direccionEntradaSalida[0] && direccionEntradaSalida[1] && !direccionEntradaSalida[2])? entradaEntradaSalida[7:0]: 8'b0;
+  regSalidaDispositivos3[7:0] = (direccionEntradaSalida[0] && direccionEntradaSalida[1] && !direccionEntradaSalida[2])? entradaEntradaSalida[7:0]: 8'b0;
+  regSalidaDispositivos4[7:0] = (!direccionEntradaSalida[0] && !direccionEntradaSalida[1] && direccionEntradaSalida[2])? entradaEntradaSalida[7:0]: 8'b0;
 end
 endmodule

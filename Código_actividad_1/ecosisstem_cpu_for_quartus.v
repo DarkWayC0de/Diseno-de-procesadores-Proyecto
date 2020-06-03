@@ -10,7 +10,7 @@ module ecosistem_cpu(input wire clk, reset,
            output wire [7:0] salidaDispositivo4,
            input wire [7:0] entradaDispositivo5,
            output wire [7:0] salidaDispositivo5);
-			  
+wire salidaTimer;			  
 
 // instanciación del procesador
 cpu micpu(clk, 
@@ -27,8 +27,8 @@ cpu micpu(clk,
           entradaDispositivo5[7:0],
           salidaDispositivo5[7:0]);
 
-wire salidaTimer;
-timer mitimer(reset && !salidaDispositivo1[3],
+
+timer mitimer(reset || !salidaDispositivo1[3],
               clk,
 			     salidaDispositivo1[2:0],
               salidaTimer);				  
