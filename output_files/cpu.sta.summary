@@ -1,0 +1,77 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow Model Setup 'clk'
+Slack : -23.247
+TNS   : -3702.403
+
+Type  : Slow Model Setup 'cpu:micpu|uc:UnidadDeControl|guardarMemoriaDatos'
+Slack : -21.194
+TNS   : -16638.936
+
+Type  : Slow Model Setup 'interrupciones[0]'
+Slack : -17.624
+TNS   : -296.876
+
+Type  : Slow Model Hold 'interrupciones[0]'
+Slack : -4.348
+TNS   : -90.793
+
+Type  : Slow Model Hold 'clk'
+Slack : 0.445
+TNS   : 0.000
+
+Type  : Slow Model Hold 'cpu:micpu|uc:UnidadDeControl|guardarMemoriaDatos'
+Slack : 1.603
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'interrupciones[0]'
+Slack : -3.800
+TNS   : -625.857
+
+Type  : Slow Model Minimum Pulse Width 'clk'
+Slack : -2.064
+TNS   : -481.193
+
+Type  : Slow Model Minimum Pulse Width 'cpu:micpu|uc:UnidadDeControl|guardarMemoriaDatos'
+Slack : -0.611
+TNS   : -1251.328
+
+Type  : Fast Model Setup 'clk'
+Slack : -7.579
+TNS   : -1239.644
+
+Type  : Fast Model Setup 'cpu:micpu|uc:UnidadDeControl|guardarMemoriaDatos'
+Slack : -7.383
+TNS   : -5439.779
+
+Type  : Fast Model Setup 'interrupciones[0]'
+Slack : -5.925
+TNS   : -90.694
+
+Type  : Fast Model Hold 'interrupciones[0]'
+Slack : -2.190
+TNS   : -45.682
+
+Type  : Fast Model Hold 'cpu:micpu|uc:UnidadDeControl|guardarMemoriaDatos'
+Slack : 0.088
+TNS   : 0.000
+
+Type  : Fast Model Hold 'clk'
+Slack : 0.215
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'clk'
+Slack : -1.627
+TNS   : -386.128
+
+Type  : Fast Model Minimum Pulse Width 'interrupciones[0]'
+Slack : -1.222
+TNS   : -149.968
+
+Type  : Fast Model Minimum Pulse Width 'cpu:micpu|uc:UnidadDeControl|guardarMemoriaDatos'
+Slack : -0.500
+TNS   : -1024.000
+
+------------------------------------------------------------

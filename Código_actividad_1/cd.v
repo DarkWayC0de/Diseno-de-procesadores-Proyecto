@@ -45,7 +45,7 @@ always @(interrupciones,reset,salidaDatosMemoriaPrograma)
 begin
   if(reset)
     begin
-    instruccion[15:0] <=16'b00;
+    instruccion[15:0] <= 16'b00;
     end
   else
   begin

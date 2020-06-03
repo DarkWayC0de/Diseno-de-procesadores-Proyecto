@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<!--Created by Liquid XML 2008 (www.liquid-technologies.com) for Altera-->
+<ProgramExecution xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
+	<QuartusExecution>
+		<AddressBits>64</AddressBits>
+		<ApplicationError>
+		<Bits>64</Bits>
+		<CommandLine>quartus</CommandLine>
+		<ErrorMessage>Access Violation at 0X00007FFE34490220</ErrorMessage>
+		<Line>0</Line>
+		<Platform>windows</Platform>
+		<SourceFile>unknown</SourceFile>
+		<StackTrace>
+	0x7ffe3449021f: wintab32 + 0x1021f (Ordinal992 + 0x1021f)
+	0x7ffe344975d3: wintab32 + 0x175d3 (WTClose + 0x4b)
+	 0x65096368: QtGui4 + 0x96368 (?qt_metacall@QTextTable@@UEAAHW4Call@QMetaObject@@HPEAPEAX@Z + 0x448)
+	 0x670fe9bc: QtCore4 + 0xfe9bc (?qt_call_post_routines@@YAXXZ + 0x8c)
+	 0x6501d700: QtGui4 + 0x1d700 (??1QApplication@@UEAA@XZ + 0x70)
+	0x1400010f2: quartus + 0x10f2
+	   0x9a4e88: CCL_MSG + 0x4e88 (?msg_exe_fini@@YAXXZ + 0x58)
+	   0x9a56cc: CCL_MSG + 0x56cc (?msg_exe_fini@@YAXXZ + 0x89c)
+	   0x8d1614: ccl_mem + 0x1614 (??1MEM_SEGMENT_INTERNAL@@UEAA@XZ + 0x1a4)
+	   0x9a62ff: CCL_MSG + 0x62ff (?msg_exe_main@@YAHHPEAPEBDP6AHH0@Z@Z + 0x8f)
+	0x140001ae8: quartus + 0x1ae8
+	0x1400013de: quartus + 0x13de
+	0x7ffe53347bd3: KERNEL32 + 0x17bd3 (BaseThreadInitThunk + 0x13)
+	0x7ffe53a8ce50: ntdll + 0x6ce50 (RtlUserThreadStart + 0x20)
+		</StackTrace>
+		<Subsystem>unknown</Subsystem>
+	</ApplicationError>
+	<Compilation>
+			<CompileID>0</CompileID>
+			<DeviceFamily/>
+			<IncrementalCompilation/>
+			<TopLevelEntityName/>
+		</Compilation>
+		<DateInvoked>2020/06/03 12:38:54</DateInvoked>
+		<ElapsedTime>369</ElapsedTime>
+		<IP>192.168.29.1,192.168.244.1,192.168.56.1,169.254.101.95,192.168.1.38</IP>
+		<IsInternal>false</IsInternal>
+		<IsQt>true</IsQt>
+		<License>
+			<Edition>Web Edition</Edition>
+			<LicenseHostID/>
+		</License>
+		<Machine>
+			<CPUCountLogical>4</CPUCountLogical>
+			<CPUCountPhysical>1</CPUCountPhysical>
+			<CPUSpeed>3691</CPUSpeed>
+			<Hostname>DARKWAYC0DE-PC</Hostname>
+			<NIC>
+				<Address>d0509980c938</Address>
+			</NIC>
+			<NIC>
+				<Address>025041000001</Address>
+			</NIC>
+			<NIC>
+				<Address>0250f23e0800</Address>
+			</NIC>
+			<NIC>
+				<Address>0a0027000019</Address>
+			</NIC>
+			<NIC>
+				<Address>00fff1d97356</Address>
+			</NIC>
+			<NIC>
+				<Address>005056c00001</Address>
+			</NIC>
+			<NIC>
+				<Address>005056c00008</Address>
+			</NIC>
+			<NIC>
+				<Address>048d385c6214</Address>
+			</NIC>
+			<NIC>
+				<Address>048d385c6214</Address>
+			</NIC>
+			<NIC>
+				<Address>048d385c6214</Address>
+			</NIC>
+			<OS>Windows 7</OS>
+			<OSAddressBits>64</OSAddressBits>
+			<OSVersion>6.2</OSVersion>
+			<Platform>windows</Platform>
+			<ScreenResolution>unknown</ScreenResolution>
+			<TotalPhysicalRAM>8036</TotalPhysicalRAM>
+			<TotalVirtualRAM>6912</TotalVirtualRAM>
+		</Machine>
+		<Name>quartus</Name>
+		<PeakMemoryUsed>0</PeakMemoryUsed>
+		<ProjectRevision>
+			<ProjectName/>
+			<Revision/>
+		</ProjectRevision>
+		<QuartusInstallation>
+			<InstallationID>0</InstallationID>
+			<Version>
+				<Build>243</Build>
+				<BuildSite>SJ</BuildSite>
+				<BuildSuffix/>
+				<Edition>Web Edition</Edition>
+				<ServicePack>1</ServicePack>
+				<VersionNumber>12.1</VersionNumber>
+			</Version>
+		</QuartusInstallation>
+		<QuartusUser>
+			<AlteraUserName/>
+			<FAEContactName/>
+			<TalkbackStatus>
+				<DateSet/>
+				<TalkbackOn>true</TalkbackOn>
+			</TalkbackStatus>
+			<UserID>229044591315256.159092994507832</UserID>
+			<UserName>DarkWayC0de_pc</UserName>
+		</QuartusUser>
+	</QuartusExecution>
+	<SchemaVersion>schema_2011-12-20</SchemaVersion>
+</ProgramExecution>
+
