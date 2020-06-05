@@ -1,25 +1,25 @@
-C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/pila.v {1 {vlog -work myCPU -nocovercells C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/pila.v
-Model Technology ModelSim ALTERA vlog 10.0d Compiler 2012.01 Jan 18 2012
--- Compiling module pila
-
-Top level modules:
-	pila
-
-} {} {}} C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/alu.v {1 {vlog -work myCPU -nocovercells C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/alu.v
+C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/alu.v {1 {vlog -work myCPu -nocovercells C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/alu.v
 Model Technology ModelSim ALTERA vlog 10.0d Compiler 2012.01 Jan 18 2012
 -- Compiling module alu
 
 Top level modules:
 	alu
 
-} {} {}} C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/memprog.v {1 {vlog -work myCPU -nocovercells C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/memprog.v
+} {} {}} C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/pila.v {1 {vlog -work myCPu -nocovercells C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/pila.v
 Model Technology ModelSim ALTERA vlog 10.0d Compiler 2012.01 Jan 18 2012
--- Compiling module memprog
+-- Compiling module pila
 
 Top level modules:
-	memprog
+	pila
 
-} {} {}} C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/componentes.v {1 {vlog -work myCPU -nocovercells C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/componentes.v
+} {} {}} C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/cd.v {1 {vlog -work myCPu -nocovercells C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/cd.v
+Model Technology ModelSim ALTERA vlog 10.0d Compiler 2012.01 Jan 18 2012
+-- Compiling module cd
+
+Top level modules:
+	cd
+
+} {} {}} C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/componentes.v {1 {vlog -work myCPu -nocovercells C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/componentes.v
 Model Technology ModelSim ALTERA vlog 10.0d Compiler 2012.01 Jan 18 2012
 -- Compiling module regfile
 -- Compiling module sum
@@ -34,49 +34,42 @@ Top level modules:
 	mux2
 	ffd
 
-} {} {}} C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/cd.v {1 {vlog -work myCPU -nocovercells C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/cd.v
+} {} {}} C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/memprog.v {1 {vlog -work myCPu -nocovercells C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/memprog.v
 Model Technology ModelSim ALTERA vlog 10.0d Compiler 2012.01 Jan 18 2012
--- Compiling module cd
+-- Compiling module memprog
 
 Top level modules:
-	cd
+	memprog
 
-} {} {}} C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/ecosisstem_cpu_for_quartus.v {1 {vlog -work myCPU -nocovercells {C:\Users\DarkWayC0de_pc\Desktop\Diseno-de-procesadores-Proyecto1\Código_actividad_1\ecosisstem_cpu_for_quartus.v}
+} {} {}} C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/ecosisstem_cpu_for_quartus.v {1 {vlog -work myCPu -nocovercells C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/ecosisstem_cpu_for_quartus.v
 Model Technology ModelSim ALTERA vlog 10.0d Compiler 2012.01 Jan 18 2012
 -- Compiling module ecosistem_cpu
 
 Top level modules:
 	ecosistem_cpu
 
-} {} {}} C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/uc.v {1 {vlog -work myCPU -nocovercells C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/uc.v
-Model Technology ModelSim ALTERA vlog 10.0d Compiler 2012.01 Jan 18 2012
--- Compiling module uc
-
-Top level modules:
-	uc
-
-} {} {}} C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/cpu.v {1 {vlog -work myCPU -nocovercells C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/cpu.v
+} {} {}} C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/cpu.v {1 {vlog -work myCPu -nocovercells C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/cpu.v
 Model Technology ModelSim ALTERA vlog 10.0d Compiler 2012.01 Jan 18 2012
 -- Compiling module cpu
 
 Top level modules:
 	cpu
 
-} {} {}} C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/entradaSalida.v {1 {vlog -work myCPU -nocovercells {C:\Users\DarkWayC0de_pc\Desktop\Diseno-de-procesadores-Proyecto1\Código_actividad_1\entradaSalida.v}
+} {} {}} C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/uc.v {1 {vlog -work myCPu -nocovercells C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/uc.v
 Model Technology ModelSim ALTERA vlog 10.0d Compiler 2012.01 Jan 18 2012
--- Compiling module entradaSalida
+-- Compiling module uc
 
 Top level modules:
-	entradaSalida
+	uc
 
-} {} {}} C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/timer.v {1 {vlog -work myCPU -nocovercells C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/timer.v
+} {} {}} C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/timer.v {1 {vlog -work myCPu -nocovercells C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/timer.v
 Model Technology ModelSim ALTERA vlog 10.0d Compiler 2012.01 Jan 18 2012
 -- Compiling module timer
 
 Top level modules:
 	timer
 
-} {} {}} C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/memoriaDatos.v {1 {vlog -work myCPU -nocovercells C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/memoriaDatos.v
+} {} {}} C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/memoriaDatos.v {1 {vlog -work myCPu -nocovercells C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/memoriaDatos.v
 Model Technology ModelSim ALTERA vlog 10.0d Compiler 2012.01 Jan 18 2012
 -- Compiling module memoriaDatos
 

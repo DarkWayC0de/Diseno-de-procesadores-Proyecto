@@ -54,29 +54,31 @@ if (activarEntradaSalida && !reset) begin
   if (!escribirEntradaSalida) begin  
     case (direccionEntradaSalida)
       6'b000000: begin
-        datoALeer[7:0] = salidaDispositivo1[7:0];
+        datoALeer[7:0] = entradaDispositivo1[7:0];
       end
       6'b000001: begin
-        datoALeer[7:0] = salidaDispositivo2[7:0];
+        datoALeer[7:0] = entradaDispositivo2[7:0];
       end
       6'b000010: begin
-        datoALeer[7:0] = salidaDispositivo3[7:0];
+        datoALeer[7:0] = entradaDispositivo3[7:0];
       end
       6'b000011: begin
-        datoALeer[7:0] = salidaDispositivo4[7:0];
+        datoALeer[7:0] = entradaDispositivo4[7:0];
       end
       6'b000100: begin
-        datoALeer[7:0] = salidaDispositivo5[7:0];
+        datoALeer[7:0] = entradaDispositivo5[7:0];
       end
       default:
-        datoALeer[7:0] = salidaDispositivo1[7:0];
+        datoALeer[7:0] = entradaDispositivo1[7:0];
     endcase 
+  end else begin
+	regSalidaDispositivos0[7:0] = (!direccionEntradaSalida[0] && !direccionEntradaSalida[1] && !direccionEntradaSalida[2])? entradaEntradaSalida[7:0]: regSalidaDispositivos0[7:0];
+	regSalidaDispositivos1[7:0] = ( direccionEntradaSalida[0] && !direccionEntradaSalida[1] && !direccionEntradaSalida[2])? entradaEntradaSalida[7:0]: regSalidaDispositivos1[7:0];
+	regSalidaDispositivos2[7:0] = (!direccionEntradaSalida[0] &&  direccionEntradaSalida[1] && !direccionEntradaSalida[2])? entradaEntradaSalida[7:0]: regSalidaDispositivos2[7:0];
+	regSalidaDispositivos3[7:0] = ( direccionEntradaSalida[0] &&  direccionEntradaSalida[1] && !direccionEntradaSalida[2])? entradaEntradaSalida[7:0]: regSalidaDispositivos3[7:0];
+	regSalidaDispositivos4[7:0] = (!direccionEntradaSalida[0] && !direccionEntradaSalida[1] &&  direccionEntradaSalida[2])? entradaEntradaSalida[7:0]: regSalidaDispositivos4[7:0];
   end
 end
-  regSalidaDispositivos0[7:0] = (!direccionEntradaSalida[0] && !direccionEntradaSalida[1] && !direccionEntradaSalida[2])? entradaEntradaSalida[7:0]: 8'b0;
-  regSalidaDispositivos1[7:0] = (direccionEntradaSalida[0] && !direccionEntradaSalida[1] && !direccionEntradaSalida[2])? entradaEntradaSalida[7:0]: 8'b0;
-  regSalidaDispositivos2[7:0] = (!direccionEntradaSalida[0] && direccionEntradaSalida[1] && !direccionEntradaSalida[2])? entradaEntradaSalida[7:0]: 8'b0;
-  regSalidaDispositivos3[7:0] = (direccionEntradaSalida[0] && direccionEntradaSalida[1] && !direccionEntradaSalida[2])? entradaEntradaSalida[7:0]: 8'b0;
-  regSalidaDispositivos4[7:0] = (!direccionEntradaSalida[0] && !direccionEntradaSalida[1] && direccionEntradaSalida[2])? entradaEntradaSalida[7:0]: 8'b0;
+  
 end
 endmodule

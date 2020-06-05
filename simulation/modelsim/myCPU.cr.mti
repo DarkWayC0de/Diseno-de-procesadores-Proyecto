@@ -1,8 +1,1 @@
-C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/simulation/modelsim/cpu.vo {1 {vlog -work myCPU -nocovercells C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/simulation/modelsim/cpu.vo
-Model Technology ModelSim ALTERA vlog 10.0d Compiler 2012.01 Jan 18 2012
--- Compiling module ecosistem_cpu
 
-Top level modules:
-	ecosistem_cpu
-
-} {} {}}

@@ -1,5 +1,5 @@
 module ecosistem_cpu(input wire clk, reset, 
-			  input [1:0] interrupciones,
+			     input [1:0] interrupciones,
            input wire [7:0] entradaDispositivo1,
            output wire [7:0] salidaDispositivo1,
            input wire [7:0] entradaDispositivo2,
@@ -28,9 +28,10 @@ cpu micpu(clk,
           salidaDispositivo5[7:0]);
 
 
-timer mitimer(reset || !salidaDispositivo1[3],
+timer mitimer(reset ,
+              salidaDispositivo1[3],
               clk,
-			     salidaDispositivo1[2:0],
+			  salidaDispositivo1[2:0],
               salidaTimer);				  
 	
 endmodule
