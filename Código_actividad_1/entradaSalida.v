@@ -16,38 +16,28 @@ module entradaSalida(input wire clk,
                      input activarEntradaSalida,
                      input escribirEntradaSalida
                      );
-reg [7:0] regSalidaDispositivos0;
-reg [7:0] regSalidaDispositivos1;
-reg [7:0] regSalidaDispositivos2;
-reg [7:0] regSalidaDispositivos3;
-reg [7:0] regSalidaDispositivos4;
-always @(reset)
-if (reset)
-begin
-  regSalidaDispositivos0[7:0]=8'b00;
-  regSalidaDispositivos1[7:0]=8'b00;
-  regSalidaDispositivos2[7:0]=8'b00;
-  regSalidaDispositivos3[7:0]=8'b00;
-  regSalidaDispositivos4[7:0]=8'b00;
-end
+							
+reg [63:0] regSalidaDispositivos00;
+
+//always @(reset)
+//if (reset)
+//begin
+//  regSalidaDispositivos00[63:0]=64'b00;
+//end
 
 initial
 begin
-  regSalidaDispositivos0[7:0]=8'b00;
-  regSalidaDispositivos1[7:0]=8'b00;
-  regSalidaDispositivos2[7:0]=8'b00;
-  regSalidaDispositivos3[7:0]=8'b00;
-  regSalidaDispositivos4[7:0]=8'b00;
+  regSalidaDispositivos00[63:0]=64'b00;
 end					 
 reg [7:0] datoALeer;
 
 assign salidaEntradaSalida[7:0] = datoALeer[7:0];
 
-assign salidaDispositivo1[7:0] = regSalidaDispositivos0[7:0];
-assign salidaDispositivo2[7:0] = regSalidaDispositivos1[7:0];
-assign salidaDispositivo3[7:0] = regSalidaDispositivos2[7:0];
-assign salidaDispositivo4[7:0] = regSalidaDispositivos3[7:0];
-assign salidaDispositivo5[7:0] = regSalidaDispositivos4[7:0];
+assign salidaDispositivo1[7:0] = regSalidaDispositivos00[7:0];
+assign salidaDispositivo2[7:0] = regSalidaDispositivos00[15:8];
+assign salidaDispositivo3[7:0] = regSalidaDispositivos00[23:16];
+assign salidaDispositivo4[7:0] = regSalidaDispositivos00[31:24];
+assign salidaDispositivo5[7:0] = regSalidaDispositivos00[39:32];
 
 always @(clk) begin
 if (activarEntradaSalida && !reset) begin  
@@ -71,12 +61,12 @@ if (activarEntradaSalida && !reset) begin
       default:
         datoALeer[7:0] = entradaDispositivo1[7:0];
     endcase 
-  end else begin
-	regSalidaDispositivos0[7:0] = (!direccionEntradaSalida[0] && !direccionEntradaSalida[1] && !direccionEntradaSalida[2])? entradaEntradaSalida[7:0]: regSalidaDispositivos0[7:0];
-	regSalidaDispositivos1[7:0] = ( direccionEntradaSalida[0] && !direccionEntradaSalida[1] && !direccionEntradaSalida[2])? entradaEntradaSalida[7:0]: regSalidaDispositivos1[7:0];
-	regSalidaDispositivos2[7:0] = (!direccionEntradaSalida[0] &&  direccionEntradaSalida[1] && !direccionEntradaSalida[2])? entradaEntradaSalida[7:0]: regSalidaDispositivos2[7:0];
-	regSalidaDispositivos3[7:0] = ( direccionEntradaSalida[0] &&  direccionEntradaSalida[1] && !direccionEntradaSalida[2])? entradaEntradaSalida[7:0]: regSalidaDispositivos3[7:0];
-	regSalidaDispositivos4[7:0] = (!direccionEntradaSalida[0] && !direccionEntradaSalida[1] &&  direccionEntradaSalida[2])? entradaEntradaSalida[7:0]: regSalidaDispositivos4[7:0];
+  end  else begin
+	regSalidaDispositivos00[7:0] = (!direccionEntradaSalida[0] && !direccionEntradaSalida[1] && !direccionEntradaSalida[2])? entradaEntradaSalida[7:0]: regSalidaDispositivos00[7:0];
+	regSalidaDispositivos00[15:8] = ( direccionEntradaSalida[0] && !direccionEntradaSalida[1] && !direccionEntradaSalida[2])? entradaEntradaSalida[7:0]: regSalidaDispositivos00[15:8];
+	regSalidaDispositivos00[23:16] = (!direccionEntradaSalida[0] &&  direccionEntradaSalida[1] && !direccionEntradaSalida[2])? entradaEntradaSalida[7:0]: regSalidaDispositivos00[23:14];
+	regSalidaDispositivos00[31:24] = ( direccionEntradaSalida[0] &&  direccionEntradaSalida[1] && !direccionEntradaSalida[2])? entradaEntradaSalida[7:0]: regSalidaDispositivos00[31:24];
+	regSalidaDispositivos00[39:32] = (!direccionEntradaSalida[0] && !direccionEntradaSalida[1] &&  direccionEntradaSalida[2])? entradaEntradaSalida[7:0]: regSalidaDispositivos00[39:32];
   end
 end
   

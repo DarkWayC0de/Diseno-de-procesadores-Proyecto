@@ -1,0 +1,24 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Users\DarkWayC0de_pc\Desktop\Diseno-de-procesadores-Proyecto1\simulation\modelsim
+vecosistem_cpu
+!s100 Ol2S`z;ZLfmaD^Xk<PW2C0
+I@:;X2jPAV]oD@1NSS?kN20
+VlGde4k]cI:Q2bRTcJBffL1
+Z1 dC:\Users\DarkWayC0de_pc\Desktop\Diseno-de-procesadores-Proyecto1\simulation\modelsim
+w1592071273
+8ecosistem_cpu_fast.vo
+Fecosistem_cpu_fast.vo
+L0 31
+OV;L;10.0d;49
+r1
+!s85 0
+31
+!s108 1592071286.640000
+!s107 ecosistem_cpu_fast.vo|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+.|ecosistem_cpu_fast.vo|
+!s101 -O0
+o-vlog01compat -work work -O0
+!s92 -vlog01compat -work work +incdir+. -O0
