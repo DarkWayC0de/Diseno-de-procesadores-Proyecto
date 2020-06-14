@@ -18,7 +18,7 @@ Z4 o-vlog01compat -work work -O0
 Z5 !s92 -vlog01compat -work work +incdir+C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1 -O0
 !s100 Jb8XP3Oo8`1GBS:RJ;9A]0
 !s85 0
-!s108 1592070613.824000
+!s108 1592149988.027000
 !s107 C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/alu.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1|C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/alu.v|
 !s101 -O0
@@ -37,7 +37,7 @@ R4
 R5
 !s100 :Q5bcMl9kNFNc<PHzc5XG1
 !s85 0
-!s108 1592070613.761000
+!s108 1592149987.935000
 !s107 C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/cd.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1|C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/cd.v|
 !s101 -O0
@@ -56,29 +56,10 @@ R4
 R5
 !s100 S>6eVl?V==]ID1Ka2=<WS2
 !s85 0
-!s108 1592070613.699000
+!s108 1592149987.857000
 !s107 C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/cpu.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1|C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/cpu.v|
 !s101 -O0
-vdemux1_8
-!s100 ]PUJc:b2mSeMQlG2JV1^40
-INjN05DcnL>DlbLmbXBFg23
-V520>]nNF7<lE<h]V2M7Fg3
-R1
-Z6 w1592064402
-Z7 8C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/componentes.v
-Z8 FC:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/componentes.v
-L0 72
-R3
-r1
-!s85 0
-31
-Z9 !s108 1592070613.980000
-Z10 !s107 C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/componentes.v|
-Z11 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1|C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/componentes.v|
-!s101 -O0
-R4
-R5
 vecosistem_cpu
 Io8kZKfon;zWJQ34]6H^A>3
 VlGde4k]cI:Q2bRTcJBffL1
@@ -94,7 +75,7 @@ R4
 R5
 !s100 oN13K^;1eKKDP[;=hao2D2
 !s85 0
-!s108 1592070613.652000
+!s108 1592149987.782000
 !s107 C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/ecosisstem_cpu_for_quartus.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1|C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/ecosisstem_cpu_for_quartus.v|
 !s101 -O0
@@ -114,7 +95,7 @@ R5
 nentrada@salida
 !s100 2bm:FYHE4Y`>XNIQ34Fg00
 !s85 0
-!s108 1592070613.590000
+!s108 1592149987.707000
 !s107 C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/entradaSalida.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1|C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/entradaSalida.v|
 !s101 -O0
@@ -123,17 +104,17 @@ vffd
 IeJ<fK>_Im13Fc41jKX6fa3
 VjTGai8EcUlS51M<UTA4<53
 R1
-R6
-R7
-R8
+Z6 w1592070844
+Z7 8C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/componentes.v
+Z8 FC:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/componentes.v
 L0 61
 R3
 r1
 !s85 0
 31
-R9
-R10
-R11
+Z9 !s108 1592149988.280000
+Z10 !s107 C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/componentes.v|
+Z11 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1|C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/componentes.v|
 !s101 -O0
 R4
 R5
@@ -153,7 +134,7 @@ R5
 nmemoria@datos
 !s100 Gj1:z[dMm9j;K4zXJ6iPj1
 !s85 0
-!s108 1592070613.933000
+!s108 1592149988.202000
 !s107 C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/memoriaDatos.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1|C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/memoriaDatos.v|
 !s101 -O0
@@ -172,7 +153,7 @@ R4
 R5
 !s100 TR3U1g3P0]iFn3bXeH;Ki1
 !s85 0
-!s108 1592070613.871000
+!s108 1592149988.122000
 !s107 C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/memprog.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1|C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/memprog.v|
 !s101 -O0
@@ -210,7 +191,7 @@ R4
 R5
 !s100 4R]:RR`RA;YO`NX=G_h8Z1
 !s85 0
-!s108 1592070613.543000
+!s108 1592149987.632000
 !s107 C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/pila.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1|C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/pila.v|
 !s101 -O0
@@ -286,7 +267,7 @@ R4
 R5
 !s100 Sb?RE>AUE:HIg;K2B1@FJ1
 !s85 0
-!s108 1592070613.496000
+!s108 1592149987.564000
 !s107 C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/timer.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1|C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/timer.v|
 !s101 -O0
@@ -305,7 +286,7 @@ R4
 R5
 !s100 97A_:nkQize>f`9>Gb^C_0
 !s85 0
-!s108 1592070613.433000
+!s108 1592149987.487000
 !s107 C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/uc.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1|C:/Users/DarkWayC0de_pc/Desktop/Diseno-de-procesadores-Proyecto1/Código_actividad_1/uc.v|
 !s101 -O0
