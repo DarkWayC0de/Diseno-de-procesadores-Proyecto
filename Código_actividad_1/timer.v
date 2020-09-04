@@ -1,7 +1,7 @@
 module timer(input wire reset,
              input wire activer,
              input wire clock,
-			 input wire [2:0] selector,
+	     input wire [2:0] selector,
              output wire salida);
 
 reg [9:0] counter;

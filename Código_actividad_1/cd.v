@@ -19,16 +19,10 @@ module cd (input wire clk,
            input wire [2:0] interrupciones, 
            output wire z, 
            output wire [5:0] opcode,
-           input wire [7:0] entradaDispositivo1,
-           output wire [7:0] salidaDispositivo1,
-           input wire [7:0] entradaDispositivo2,
-           output wire [7:0] salidaDispositivo2,
-           input wire [7:0] entradaDispositivo3,
-           output wire [7:0] salidaDispositivo3,
-           input wire [7:0] entradaDispositivo4,
-           output wire [7:0] salidaDispositivo4,
-           input wire [7:0] entradaDispositivo5,
-           output wire [7:0] salidaDispositivo5
+           output wire rd, wr,
+           output wire [15:0] dir,
+           input wire [7:0] entradaDispositivo,
+           output wire [7:0] salidaDispositivo
            );
 //Camino de datos de instrucciones de un solo ciclo
 
@@ -229,8 +223,14 @@ wire [7:0] datosSalidaEntradaSalida;
 wire activarEntradaSalida;
 assign activarEntradaSalida = activarMemoriaDatos && salidaMuxDireccionMemoriaDatos[7:7];
 
-entradaSalida dispositivosEntradaSalida(clk,
+/*entradaSalida dispositivosEntradaSalida(clk,
                                         reset,
+                                        rd, 
+                                        wr,
+                                        dir[15:0],
+                                        entradaDispositivo[7:0],
+                                        salidaDispositivo[7:0]
+                                        );
                                         entradaDispositivo1 [7:0],
                                         salidaDispositivo1 [7:0],
                                         entradaDispositivo2 [7:0],
@@ -246,7 +246,7 @@ entradaSalida dispositivosEntradaSalida(clk,
                                         datosSalidaEntradaSalida [7:0],
                                         activarEntradaSalida,
                                         guardarMemoriaDatos
-                                        );
+                                        );  */
 
 wire [9:0] entradaPilaSubRutinas,
            salidaPilaSubRutinas;
