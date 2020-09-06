@@ -1,5 +1,6 @@
 module cpu(input wire clk, reset, 
            input wire [2:0] interrupciones,
+	   output wire enable_whisbone,
            output wire rd, wr,
            output wire [15:0] dir,
            input wire [7:0] entradaDispositivo,

@@ -11,6 +11,7 @@ module whisbone_master( input wire rst_i,
 			input wire cpu_wr,
 			input wire [15:0] cpu_dir,
 			input wire [7:0] cpu_data_i,
+			input wire enable_whisbone,
 			output wire [7:0] cpu_data_o);
 reg r_cyc_o,r_stb_o;
 always @(posedge rst_i) begin
@@ -26,5 +27,10 @@ end
 
 assign cyc_o = r_cyc_o;
 assign stb_o = r_stb_o;
+assign cpu_data_o = dat_i;
+assign dat_o = cpu_data_i;
+assign we_o = cpu_wr;
+assign stb_o = enable_whisbone;
+assign cyc_o = enable_whisbone;
 
 endmodule
