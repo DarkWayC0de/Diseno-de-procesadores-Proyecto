@@ -2,7 +2,7 @@
 # Compilacion con iverilog
 
 ~~~.sh
-$ iverilog -o CPU iverilog cpu_tb.v alu.v cd.v componentes.v cpu.v entradaSalida.v memoriaDatos.v memprog.v  pila.v timer.v  uc.v 
+$ iverilog -o CPU alu.v cd.v componentes.v  memdataexter.v syscon.v cpu_tb.v memoriaDatos.v memprog.v uc.v cpu.v pila.v wishbone_master.v wishbone_slave.v
 ~~~
 ~~~.sh
 $ vvp CPU 
