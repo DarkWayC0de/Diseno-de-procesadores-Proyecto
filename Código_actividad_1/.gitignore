@@ -1,4 +1,6 @@
 CPU
 *.vcd
-
+*~
+*.swp
+*.swo
 
