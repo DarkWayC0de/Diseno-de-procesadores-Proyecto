@@ -20,7 +20,9 @@ wire z,
      activarPilaDatos,
      pushPilaDatos,
      selectorMuxPilaDatos,
-     selectorMuxAluMem_E_S;
+     selectorMuxAluMem_E_S,
+     editdirles,
+     editdirhig;
 wire [2:0] op_alu;
 wire [5:0] opcode;
 
@@ -42,6 +44,8 @@ uc UnidadDeControl(opcode[5:0],
                    pushPilaDatos,
                    selectorMuxPilaDatos,
                    selectorMuxAluMem_E_S,
+                   editdirles,
+                   editdirhig,
                    op_alu[2:0]);
 
 cd CaminoDeDatos(clk,
@@ -61,6 +65,8 @@ cd CaminoDeDatos(clk,
                  pushPilaDatos,
                  selectorMuxPilaDatos,
                  selectorMuxAluMem_E_S,
+                 editdirles,
+                 editdirhig,
                  op_alu[2:0],
                  interrupciones,
                  z,
@@ -69,6 +75,7 @@ cd CaminoDeDatos(clk,
                  wr,
                  dir[15:0],
                  entradaDispositivo[7:0],
-                 salidaDispositivo[7:0]
+                 salidaDispositivo[7:0],
+		 enable_wishbone
                  );
 endmodule

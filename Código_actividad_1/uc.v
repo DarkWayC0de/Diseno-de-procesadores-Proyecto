@@ -14,7 +14,9 @@ module uc(input wire [5:0] opcode,
                       activarPilaDatos,
                       pushPilaDatos,
                       selectorMuxPilaDatos,
-                      selectorMuxAluMem_E_S, 
+                      selectorMuxAluMem_E_S,
+		      editdirles,
+                      editdirhig, 
           output reg [2:0] op_alu);
 always @ (opcode,z,clk)
 casex(opcode)
@@ -35,6 +37,8 @@ casex(opcode)
      selectorMuxPilaDatos = 1'b0;
      selectorMuxAluMem_E_S = 1'b0;
      op_alu[2:0] = opcode[4:2];
+     editdirles = 1'b0;
+     editdirhig = 1'b0;
   end
   6'b1000xx: begin //Carga Inmediato
      we3 = 1'b1;
@@ -53,6 +57,8 @@ casex(opcode)
      selectorMuxPilaDatos = 1'b0;
      selectorMuxAluMem_E_S = 1'b0;
      op_alu[2:0] = opcode[4:2]; 
+     editdirles = 1'b0;
+     editdirhig = 1'b0;
   end
   6'b1001xx: begin //push dato
      we3 = 1'b0;
@@ -71,6 +77,8 @@ casex(opcode)
      selectorMuxPilaDatos = 1'b1;
      selectorMuxAluMem_E_S = 1'b0;
      op_alu[2:0] = opcode[4:2];
+     editdirles = 1'b0;
+     editdirhig = 1'b0;
   end
   6'b1010xx: begin //pop dato
      we3 = 1'b1;
@@ -89,6 +97,8 @@ casex(opcode)
      selectorMuxPilaDatos = 1'b1;
      selectorMuxAluMem_E_S = 1'b0;
      op_alu[2:0] = opcode[4:2];
+     editdirles = 1'b0;
+     editdirhig = 1'b0;
   end
   6'b1011xx: begin //cargar dato desde memoria
      we3 = 1'b1;
@@ -107,6 +117,8 @@ casex(opcode)
      selectorMuxPilaDatos = 1'b0;
      selectorMuxAluMem_E_S = 1'b1;
      op_alu[2:0] = opcode[4:2];
+     editdirles = 1'b0;
+     editdirhig = 1'b0;
   end
   6'b1100xx: begin //guardar memoria de datos
      we3 = 1'b0;
@@ -125,14 +137,50 @@ casex(opcode)
      selectorMuxPilaDatos = 1'b0;
      selectorMuxAluMem_E_S = 1'b1;
      op_alu[2:0] = opcode[4:2];
+     editdirles = 1'b0;
+     editdirhig = 1'b0;
   end
   6'b1101xx: begin //LIBRE
   end
-  6'b111000: begin //libre
-
+  6'b111000: begin //duardar r2 en dir[15:8]
+     we3 = 1'b0;
+     wez = 1'b0;
+     s_inc = 1'b1;
+     selectorMuxSaltoR = 1'b0;
+     selectorMuxRegistros = 1'b0;
+     guardarMemoriaDatos = 1'b0;
+     activarMemoriaDatos = 1'b0;
+     selectorMuxDireccionesMemoriaDatos = 1'b0;
+     activarPilaSubR = 1'b0;
+     pushPilaSubR = 1'b0;
+     selectorMuxPilaSubR = 1'b0;
+     activarPilaDatos = 1'b0;
+     pushPilaDatos = 1'b0;
+     selectorMuxPilaDatos = 1'b0;
+     selectorMuxAluMem_E_S = 1'b0;
+     op_alu[2:0] = opcode[4:2];
+     editdirles = 1'b0;
+     editdirhig = 1'b1;
   end
-  6'b111001: begin //Libre
-
+  6'b111001: begin //guardar r2 en dir[7:0]
+     we3 = 1'b0;
+     wez = 1'b0;
+     s_inc = 1'b1;
+     selectorMuxSaltoR = 1'b0;
+     selectorMuxRegistros = 1'b0;
+     guardarMemoriaDatos = 1'b0;
+     activarMemoriaDatos = 1'b0;
+     selectorMuxDireccionesMemoriaDatos = 1'b0;
+     activarPilaSubR = 1'b0;
+     pushPilaSubR = 1'b0;
+     selectorMuxPilaSubR = 1'b0;
+     activarPilaDatos = 1'b0;
+     pushPilaDatos = 1'b0;
+     selectorMuxPilaDatos = 1'b0;
+     selectorMuxAluMem_E_S = 1'b0;
+     op_alu[2:0] = opcode[4:2];
+     editdirles = 1'b1;
+     editdirhig = 1'b0;
   end
   6'b111010: begin //return
      we3 = 1'b0;
@@ -151,6 +199,8 @@ casex(opcode)
      selectorMuxPilaDatos = 1'b0;
      selectorMuxAluMem_E_S = 1'b0;
      op_alu[2:0] = opcode[4:2];
+     editdirles = 1'b0;
+     editdirhig = 1'b0;
   end
   6'b111011: begin //call 
      we3 = 1'b0;
@@ -169,6 +219,8 @@ casex(opcode)
      selectorMuxPilaDatos = 1'b0;
      selectorMuxAluMem_E_S = 1'b0;
      op_alu[2:0] = opcode[4:2];
+     editdirles = 1'b0;
+     editdirhig = 1'b0;
   end
   6'b111100: begin //J
      we3 = 1'b0;
@@ -187,6 +239,8 @@ casex(opcode)
      selectorMuxPilaDatos = 1'b0;
      selectorMuxAluMem_E_S = 1'b0;
      op_alu[2:0] = opcode[4:2];
+     editdirles = 1'b0;
+     editdirhig = 1'b0;
   end
   6'b111101: begin //JZ
     if (z==0) begin
@@ -210,6 +264,8 @@ casex(opcode)
      selectorMuxPilaDatos = 1'b0;
      selectorMuxAluMem_E_S = 1'b0;
      op_alu[2:0] = opcode[4:2];
+     editdirles = 1'b0;
+     editdirhig = 1'b0;
   end
   6'b111110: begin //JNZ
     if (z == 1) begin
@@ -233,6 +289,8 @@ casex(opcode)
      selectorMuxPilaDatos = 1'b0;
      selectorMuxAluMem_E_S = 1'b0;
      op_alu[2:0] = opcode[4:2];
+     editdirles = 1'b0;
+     editdirhig = 1'b0;
   end
   6'b111111: begin //JR
      we3 = 1'b0;
@@ -251,6 +309,8 @@ casex(opcode)
      selectorMuxPilaDatos = 1'b0;
      selectorMuxAluMem_E_S = 1'b0;
      op_alu[2:0] = opcode[4:2];
+     editdirles = 1'b0;
+     editdirhig = 1'b0;
   end
 endcase
 endmodule

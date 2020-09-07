@@ -15,6 +15,8 @@ module cd (input wire clk,
                       pushPilaDatos,
                       selectorMuxPilaDatos,
                       selectorMuxAluMem, 
+		      editdirles,
+                      editdirhig,
            input wire [2:0] op_alu,
            input wire [2:0] interrupciones, 
            output wire z, 
@@ -22,13 +24,19 @@ module cd (input wire clk,
            output wire rd, wr,
            output wire [15:0] dir,
            input wire [7:0] entradaDispositivo,
-           output wire [7:0] salidaDispositivo
+           output wire [7:0] salidaDispositivo,
+	   output wire enable_wishbone
            );
 //Camino de datos de instrucciones de un solo ciclo
 
 wire [9:0] entradaDatosMemoriaPrograma;
 reg [15:0] instruccion;
 wire [15:0] salidaDatosMemoriaPrograma;
+reg [15:0] rdir;
+
+initial begin 
+ rdir[15:0] = 16'b00;
+end
 
 parameter ins = 16'b1110111111111111; 
 
@@ -220,9 +228,16 @@ assign direccionMemoriaDatos = salidaMuxDireccionMemoriaDatos[6:0];
 assign activarMemoria = activarMemoriaDatos && !salidaMuxDireccionMemoriaDatos[7:7];
 
 wire [7:0] datosSalidaEntradaSalida;
-wire activarEntradaSalida;
-assign activarEntradaSalida = activarMemoriaDatos && salidaMuxDireccionMemoriaDatos[7:7];
-
+assign enable_whisbone = activarMemoriaDatos && salidaMuxDireccionMemoriaDatos[7:7];
+assign rd = ~guardarMemoriaDatos;
+assign wr = guardarMemoriaDatos;
+assign dir[15:0] = rdir[15:0];
+assign datosSalidaEntradaSalida[7:0] = entradaDispositivo[7:0];
+assign salidaDispositivo[7:0] = (enable_whisbone ? datoSalidaRegistro1[7:0] : 8'bZ);
+always @(posedge clk) begin
+  if(editdirhig) rdir[15:8] <= datoSalidaRegistro2[7:0];
+  if(editdirles) rdir[7:0]  <= datoSalidaRegistro2[7:0];
+end
 /*entradaSalida dispositivosEntradaSalida(clk,
                                         reset,
                                         rd, 
