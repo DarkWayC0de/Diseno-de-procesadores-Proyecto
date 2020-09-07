@@ -20,12 +20,12 @@ end
 wire [7:0] entradaDispositivo;
 wire [7:0] salidaDispositivo;
 wire [15:0] dir;
-wire enable_whisbone;
+wire enable_wisbone;
 // instanciación del procesador
 cpu micpu(clk, 
           reset,
           interrupciones[2:0],
-	  enable_whishbone,
+	  enable_wishbone,
           rd, wr,
           dir[15:0],
           entradaDispositivo[7:0],
@@ -68,7 +68,7 @@ wire [11:0] mem_dir;
 wire [7:0] mem_indata;
 wire [7:0] mem_outdata;
 
-whishbone_slave memslav(rst_syscom,
+wishbone_slave memslav(rst_syscom,
 			clk_syscom,
 			dir_wishbone[11:0],
 			we_wishbone,
