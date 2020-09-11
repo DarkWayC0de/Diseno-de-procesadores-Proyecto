@@ -70,7 +70,7 @@ wire [7:0] mem_outdata;
 
 wishbone_slave memslav(rst_syscom,
 			clk_syscom,
-			dir_wishbone[11:0],
+			dir_wishbone[15:0],
 			we_wishbone,
 			stb_wishbone,
 			cyc_wishbone,
@@ -92,6 +92,66 @@ memdata memextern(	clk,
 			mem_dir[11:0],
 			mem_indata[7:0],
 			mem_outdata[7:0]);
+// MEM 2
+wire	mem_cs2,mem_we2,mem_oe2;
+wire [11:0] mem_dir2;
+wire [7:0] mem_indata2;
+wire [7:0] mem_outdata2;
+
+wishbone_slave #(4'b0001) memslav2(rst_syscom,
+				   clk_syscom,
+			           dir_wishbone[15:0],
+			           we_wishbone,
+			           stb_wishbone,
+			           cyc_wishbone,
+			           data_wishbone_master_o[7:0],
+			           data_wishbone_master_i[7:0],
+			           ack_wishbone,
+			           mem_cs2,
+			           mem_we2,
+			           mem_oe2,
+			           mem_dir2[11:0],
+			           mem_indata2[7:0],
+			           mem_outdata2[7:0]);
+
+
+memdata memextern2(	clk,
+			mem_cs2,
+			mem_we2,
+			mem_oe2,
+			mem_dir2[11:0],
+			mem_indata2[7:0],
+			mem_outdata2[7:0]);
+// MEM 3
+wire	mem_cs3,mem_we3,mem_oe3;
+wire [11:0] mem_dir3;
+wire [7:0] mem_indata3;
+wire [7:0] mem_outdata3;
+
+wishbone_slave #(4'b0010) memslav3(rst_syscom,
+				   clk_syscom,
+			           dir_wishbone[15:0],
+			           we_wishbone,
+			           stb_wishbone,
+			           cyc_wishbone,
+			           data_wishbone_master_o[7:0],
+			           data_wishbone_master_i[7:0],
+			           ack_wishbone,
+			           mem_cs3,
+			           mem_we3,
+			           mem_oe3,
+			           mem_dir3[11:0],
+			           mem_indata3[7:0],
+			           mem_outdata3[7:0]);
+
+
+memdata memextern3(	clk,
+			mem_cs3,
+			mem_we3,
+			mem_oe3,
+			mem_dir3[11:0],
+			mem_indata3[7:0],
+			mem_outdata3[7:0]);
 
 /*reg [2:0] timerselctor;
 reg activetimer;
