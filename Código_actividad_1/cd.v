@@ -25,7 +25,8 @@ module cd (input wire clk,
            output wire [15:0] dir,
            input wire [7:0] entradaDispositivo,
            output wire [7:0] salidaDispositivo,
-	   output wire enable_wishbone
+	   output wire enable_wishbone,
+           input wire cpu_wait
            );
 //Camino de datos de instrucciones de un solo ciclo
 
@@ -111,8 +112,11 @@ assign habilitarEscrituraBancoRegistros = we3;
 
 wire [9:0] entradaPC, 
            salidaPC;
+wire clk_pc;
 
-registro #(10) pc(clk, 
+assign clk_pc =(cpu_wait?clk_pc:clk);
+
+registro #(10) pc(clk_pc, 
                   reset, 
                   entradaPC[9:0], 
                   salidaPC[9:0]);

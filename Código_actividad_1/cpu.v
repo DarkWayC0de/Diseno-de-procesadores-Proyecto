@@ -4,7 +4,8 @@ module cpu(input wire clk, reset,
            output wire rd, wr,
            output wire [15:0] dir,
            input wire [7:0] entradaDispositivo,
-           output wire [7:0] salidaDispositivo);
+           output wire [7:0] salidaDispositivo,
+           input wire cpu_wait);
 wire z,
      we3,
      wez,
@@ -76,6 +77,7 @@ cd CaminoDeDatos(clk,
                  dir[15:0],
                  entradaDispositivo[7:0],
                  salidaDispositivo[7:0],
-		 enable_wishbone
+		 enable_wishbone,
+                 cpu_wait
                  );
 endmodule

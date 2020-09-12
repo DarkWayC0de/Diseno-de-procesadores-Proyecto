@@ -20,7 +20,7 @@ end
 wire [7:0] entradaDispositivo;
 wire [7:0] salidaDispositivo;
 wire [15:0] dir;
-wire enable_wisbone;
+wire enable_wisbone, cpu_wait;
 // instanciación del procesador
 cpu micpu(clk, 
           reset,
@@ -29,7 +29,8 @@ cpu micpu(clk,
           rd, wr,
           dir[15:0],
           entradaDispositivo[7:0],
-          salidaDispositivo[7:0]);
+          salidaDispositivo[7:0],
+          cpu_wait);
 
 wire 	rst_syscom,
 	clk_syscom,
@@ -61,7 +62,8 @@ whisbone_master master_cpu(	rst_syscom,
 				dir[15:0],
 				salidaDispositivo[7:0],
 				enable_wishbone,
-				entradaDispositivo[7:0]);
+				entradaDispositivo[7:0],
+                                cpu_wait);
 
 wire	mem_cs,	mem_we,	mem_oe;
 wire [11:0] mem_dir;

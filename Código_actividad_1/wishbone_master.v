@@ -12,8 +12,10 @@ module whisbone_master( input wire rst_i,
 			input wire [15:0] cpu_dir,
 			input wire [7:0] cpu_data_i,
 			input wire enable_wishbone,
-			output wire [7:0] cpu_data_o);
+			output wire [7:0] cpu_data_o,
+                        output wire cpu_wait);
 
+assign cpu_wait = ((~rst_i?enable_wishbone:1'b0)?(ack_i?'b0:'b1):'b0);
 assign adr_o = cpu_dir;
 assign stb_o =(~rst_i?enable_wishbone:1'b0);
 assign cyc_o =(~rst_i?enable_wishbone:1'b0);
