@@ -128,7 +128,7 @@ wire [11:0] mem_dir3;
 wire [7:0] mem_indata3;
 wire [7:0] mem_outdata3;
 
-wishbone_slave #(4'b0010) memslav3(rst_syscom,
+wishbone_slave #(4'b0010)  memslav3(rst_syscom,
 				   clk_syscom,
 			           dir_wishbone[15:0],
 			           we_wishbone,

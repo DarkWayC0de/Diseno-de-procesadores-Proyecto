@@ -233,7 +233,7 @@ assign rd = ~guardarMemoriaDatos;
 assign wr = guardarMemoriaDatos;
 assign dir[15:0] = rdir[15:0];
 assign datosSalidaEntradaSalida[7:0] = entradaDispositivo[7:0];
-assign salidaDispositivo[7:0] = (enable_wishbone ? datoSalidaRegistro1[7:0] : 8'bZ);
+assign salidaDispositivo[7:0] = ((enable_wishbone && wr )? datoSalidaRegistro1[7:0] : 8'bZ);
 always @(posedge clk) begin
   if(editdirhig) rdir[15:8] <= datoSalidaRegistro2[7:0];
   if(editdirles) rdir[7:0]  <= datoSalidaRegistro2[7:0];

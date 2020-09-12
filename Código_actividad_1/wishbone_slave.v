@@ -1,5 +1,5 @@
 module wishbone_slave #(parameter DIRR = 4'b0000)
-                       (input wire rst_i,
+		       (input wire rst_i,
 		       	input wire clk_i,
                        	input wire [15:0] adr_i,
 		       	input wire we_i,
@@ -15,11 +15,11 @@ module wishbone_slave #(parameter DIRR = 4'b0000)
 			output wire [7:0] mem_indata,
                         input wire [7:0] mem_outdata);
 
-assign ack_o =(adr_i[15:12] == DIRR)?(cyc_i &stb_i):4'bZ;
+assign ack_o =((adr_i[15:12] == DIRR)?(cyc_i&stb_i) : 'bZ);
 assign mem_dir[11:0] = adr_i[11:0];
 assign mem_indata = dat_i;
 assign dat_o = mem_outdata;
-assign mem_cs = (ack_o?'b1: 'b0);
+assign mem_cs = (((adr_i[15:12] == DIRR)&&ack_o)?'b1 : 'b0);
 assign mem_we = we_i;
 assign mem_oe = ~ we_i;
 endmodule

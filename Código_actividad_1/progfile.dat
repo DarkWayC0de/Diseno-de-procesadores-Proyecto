@@ -2,34 +2,34 @@
 1000000000010010  //Carga imediato 1  en r2
 1000001000010011  //Carga imediato 33 en r3
 1000010001000100  //Carga imediato 68 en r4
+1000000100000101  //Carga imediato 16 en r5
+1000001000001000  //Carga imediato 32 en r8
+1000001110111001  //Carga imediato 59 en r9
+1000010011101010  //Carga imediato 78 en r10
 1110000000000000  //Carga en la parta alta de dir r0 (00000000)
 1110010000010000  //Carga en la parte baja de dir r1 (00001010)
-1100001110000000  //Guardamos en la memoria externa el registro r3 que contien  33
+1100001110000000  //Guardamos en la memoria externa el registro r3 que contiene  33
 1110010000100000  //Cargamos en la parte baja de dir r2 (00000001)
 1100010010000000  //Guaradamos en la memoria externa el registro r4 que contiene 68
+1110000001010000  //Carga en la parta alta de dir r5 (00010000)
+1110010000000000  //Carga en la parte baja de dir r0 (00000000)
+1100100110000000  //Guardamos en la memoria externa 2 el registro r9 que contiene  59
+1110000010000000  //Carga en la parta alta de dir r8 (00010000)
+1110010000110000  //Carga en la parte baja de dir r3 (00010001)
+1100101010000000  //Guardamos en la memoria externa 3 el registro r10 que contiene  78
+0000000000000000
+0000000000000000
+1110000000000000  //Carga en la parta alta de dir r0 (00000000)
 1110010000010000  //Carga en la parte baja de dir r1 (00001010)
-1011100000000110  //Leemos de la memoria externa, lo guardamos en r6 tiene que contener 33
+1011100000000110  //Leemos de la memoria externa, lo guardamos en r6 tiene que contiene 33
 1110010000100000  //Cargamos en la parte baja de dir r2 (00000001)
-1011100000000111  //Leemos de la memoria externa, lo guardamos en r7 tiene que contener 68
-0000000000000000
-0000000000000000
-0000000000000000
-0000000000000000
-0000000000000000
-0000000000000000
-0000000000000000
-0000000000000000
-0000000000000000
-0000000000000000  
-0000000000000000 
-0000000000000000
-0000000000000000
-0000000000000000
-0000000000000000
-0000000000000000
-0000000000000000
-0000000000000000
-0000000000000000
+1011100000000111  //Leemos de la memoria externa, lo guardamos en r7 tiene que contiene 68
+1110000001010000  //Carga en la parta alta de dir r5 (00010000)
+1110010000000000  //Carga en la parte baja de dir r0 (00000000)
+1011100000001100  //Leemos de la memoria externa 2, lo guardamos en r12 tiene que contiene 59
+1110000010000000  //Carga en la parta alta de dir r8 (00010000)
+1110010000110000  //Carga en la parte baja de dir r3 (00010001)
+1011100000001101  //Leemos de la memoria externa3, lo guardamos en r13 tiene que contener 78
 0000000000000000
 0000000000000000
 0000000000000000
