@@ -21,7 +21,7 @@ wire [7:0] entradaDispositivo;
 wire [7:0] salidaDispositivo;
 wire [15:0] dir;
 wire enable_wisbone, cpu_wait;
-// instanciación del procesador
+// CPU
 cpu micpu(clk, 
           reset,
           interrupciones[2:0],
@@ -47,16 +47,30 @@ syscon mysyscon(clk,
 		reset, 
 		clk_syscom,
 		rst_syscom);
+wire we_master1,
+     stb_master1,
+     ack_master1,
+     cyc_master1;
+wire we_master2,
+     stb_master2,
+     ack_master2,
+     cyc_master2;
+
+wire [7:0] data_master1_o;
+wire [7:0] data_master2_o;
+wire [15:0] dir_master1;
+wire [15:0] dir_master2;
+
 
 whisbone_master master_cpu(	rst_syscom,
 				clk_syscom,
-				ack_wishbone,
+				ack_master1,
 				data_wishbone_master_i[7:0],
-				data_wishbone_master_o[7:0],
-				dir_wishbone[15:0],
-				we_wishbone,
-				stb_wishbone,
-				cyc_wishbone,
+ 				data_master1_o[7:0],
+				dir_master1[15:0],
+				we_master1,
+				stb_master1,
+				cyc_master1,
 				rd,
 				wr,
 				dir[15:0],
@@ -64,12 +78,66 @@ whisbone_master master_cpu(	rst_syscom,
 				enable_wishbone,
 				entradaDispositivo[7:0],
                                 cpu_wait);
+wire enable_wishbone2,
+     rd2,
+     wr2,
+     cpu_wait2;
+wire [15:0] dir2; 
+wire [7:0]  data_master2_2,salidaDispositivo2,entradaDispositivo2;
+
+// WISBONE ARBITRATOR
+
+whisbone_master_arbitrator2 arbitrator(	data_wishbone_master_o[7:0],
+					dir_wishbone[15:0],
+					we_wishbone,
+					stb_wishbone,
+					cyc_wishbone,
+                                        ack_wishbone,
+ 					data_master1_o[7:0],
+					dir_master1[15:0],
+					we_master1,
+					stb_master1,
+					cyc_master1,
+					ack_master1,
+ 					data_master2_o[7:0],
+					dir_master2[15:0],
+					we_master2,
+					stb_master2,
+					cyc_master2,
+                                        ack_master2);
+//CPU 2     
+cpu micpu2(clk, 
+          reset,
+          interrupciones[2:0],
+	  enable_wishbone2,
+          rd2, wr2,
+          dir2[15:0],
+          entradaDispositivo2[7:0],
+          salidaDispositivo2[7:0],
+          cpu_wait2);
+
+whisbone_master master_cpu2(	rst_syscom,
+				clk_syscom,
+				ack_master2,
+				data_wishbone_master_i[7:0],
+ 				data_master2_o[7:0],
+				dir_master2[15:0],
+				we_master2,
+				stb_master2,
+				cyc_master2,
+				rd2,
+				wr2,
+				dir2[15:0],
+				salidaDispositivo2[7:0],
+				enable_wishbone2,
+				entradaDispositivo2[7:0],
+                                cpu_wait2);
 
 wire	mem_cs,	mem_we,	mem_oe;
 wire [11:0] mem_dir;
 wire [7:0] mem_indata;
 wire [7:0] mem_outdata;
-
+//MEM 1
 wishbone_slave memslav(rst_syscom,
 			clk_syscom,
 			dir_wishbone[15:0],
